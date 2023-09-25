@@ -22,7 +22,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.toolBox = QToolBox(self.centralwidget)
         self.toolBox.setObjectName(u"toolBox")
-        self.toolBox.setGeometry(QRect(10, 10, 120, 710))
+        self.toolBox.setGeometry(QRect(10, 10, 161, 710))
         font = QFont()
         font.setPointSize(16)
         self.toolBox.setFont(font)
@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         self.toolBox.setLineWidth(5)
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 120, 596))
+        self.page.setGeometry(QRect(0, 0, 161, 578))
         self.gridLayout_14 = QGridLayout(self.page)
         self.gridLayout_14.setObjectName(u"gridLayout_14")
         self.btnNavVideoResize = QPushButton(self.page)
@@ -63,25 +63,55 @@ class Ui_MainWindow(object):
         self.toolBox.addItem(self.page, u">\u89c6\u9891\u5904\u7406")
         self.page_3 = QWidget()
         self.page_3.setObjectName(u"page_3")
-        self.page_3.setGeometry(QRect(0, 0, 120, 596))
+        self.page_3.setGeometry(QRect(0, 0, 161, 578))
         self.gridLayout_9 = QGridLayout(self.page_3)
         self.gridLayout_9.setObjectName(u"gridLayout_9")
         self.toolBox.addItem(self.page_3, u">\u56fe\u50cf\u5904\u7406")
         self.page_4 = QWidget()
         self.page_4.setObjectName(u"page_4")
-        self.page_4.setGeometry(QRect(0, 0, 120, 596))
+        self.page_4.setGeometry(QRect(0, 0, 161, 578))
         self.gridLayout_21 = QGridLayout(self.page_4)
         self.gridLayout_21.setObjectName(u"gridLayout_21")
         self.toolBox.addItem(self.page_4, u">\u811a\u672c")
         self.stackedWidget = QStackedWidget(self.centralwidget)
         self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setGeometry(QRect(140, 0, 860, 720))
+        self.stackedWidget.setGeometry(QRect(160, 0, 840, 720))
         self.pageVideoResize = QWidget()
         self.pageVideoResize.setObjectName(u"pageVideoResize")
-        self.btnCreateVideoTask = QPushButton(self.pageVideoResize)
+        self.widget = QWidget(self.pageVideoResize)
+        self.widget.setObjectName(u"widget")
+        self.widget.setGeometry(QRect(10, 10, 801, 701))
+        self.verticalLayout_2 = QVBoxLayout(self.widget)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+
+        self.verticalLayout_2.addLayout(self.verticalLayout)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
+        self.btnCreateVideoTask = QPushButton(self.widget)
         self.btnCreateVideoTask.setObjectName(u"btnCreateVideoTask")
-        self.btnCreateVideoTask.setGeometry(QRect(300, 310, 181, 61))
         self.btnCreateVideoTask.setFont(font)
+
+        self.horizontalLayout.addWidget(self.btnCreateVideoTask)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
+
+        self.verticalLayout_2.addItem(self.verticalSpacer_2)
+
         self.stackedWidget.addWidget(self.pageVideoResize)
         self.pageVideoFormat = QWidget()
         self.pageVideoFormat.setObjectName(u"pageVideoFormat")
@@ -98,12 +128,12 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1000, 23))
+        self.menubar.setGeometry(QRect(0, 0, 1000, 26))
         MainWindow.setMenuBar(self.menubar)
 
         self.retranslateUi(MainWindow)
 
-        self.toolBox.setCurrentIndex(2)
+        self.toolBox.setCurrentIndex(0)
         self.toolBox.layout().setSpacing(9)
         self.stackedWidget.setCurrentIndex(0)
 
