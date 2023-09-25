@@ -7,113 +7,102 @@
     <x>0</x>
     <y>0</y>
     <width>804</width>
-    <height>71</height>
+    <height>67</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>0</y>
-     <width>741</width>
-     <height>71</height>
+     <x>40</x>
+     <y>10</y>
+     <width>751</width>
+     <height>51</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="8,0,2,2,1">
-    <property name="spacing">
-     <number>16</number>
-    </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="4,6,0,1,1,0,1">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="spacing">
-       <number>2</number>
+     <widget class="QLabel" name="labelFileName">
+      <property name="lineWidth">
+       <number>3</number>
       </property>
-      <item>
-       <widget class="QLabel" name="labelFileName">
-        <property name="lineWidth">
-         <number>3</number>
-        </property>
-        <property name="text">
-         <string>filename</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="labelVideoInfo">
-        <property name="text">
-         <string>filename</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="checkBoxKeepRatio">
       <property name="text">
-       <string>保持纵横比</string>
+       <string>filename</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <property name="spacing">
-       <number>2</number>
+     <widget class="QLabel" name="labelVideoInfo">
+      <property name="text">
+       <string>filename</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>缩放比</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboBoxRatio"/>
-        </item>
-       </layout>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>缩放比</string>
+        </property>
+       </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <property name="spacing">
-         <number>12</number>
-        </property>
-        <item>
-         <widget class="QLineEdit" name="lineEditResizeW"/>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_4">
-          <property name="text">
-           <string>x</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEditResizeH"/>
-        </item>
-       </layout>
+       <widget class="QComboBox" name="comboBoxRatio"/>
       </item>
      </layout>
     </item>
     <item>
-     <widget class="QProgressBar" name="pgsBar">
-      <property name="value">
-       <number>24</number>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QLineEdit" name="lineEditResizeW"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>x</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEditResizeH"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="labelState">
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </item>
