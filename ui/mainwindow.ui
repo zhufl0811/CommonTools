@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>750</height>
+    <width>1080</width>
+    <height>758</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,7 +46,7 @@
        <x>0</x>
        <y>0</y>
        <width>161</width>
-       <height>578</height>
+       <height>596</height>
       </rect>
      </property>
      <attribute name="label">
@@ -127,8 +127,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>161</width>
-       <height>578</height>
+       <width>98</width>
+       <height>28</height>
       </rect>
      </property>
      <attribute name="label">
@@ -141,8 +141,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>161</width>
-       <height>578</height>
+       <width>98</width>
+       <height>28</height>
       </rect>
      </property>
      <attribute name="label">
@@ -156,7 +156,7 @@
      <rect>
       <x>160</x>
       <y>0</y>
-      <width>840</width>
+      <width>920</width>
       <height>720</height>
      </rect>
     </property>
@@ -164,12 +164,12 @@
      <number>0</number>
     </property>
     <widget class="QWidget" name="pageVideoResize">
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>801</width>
+        <width>901</width>
         <height>701</height>
        </rect>
       </property>
@@ -275,8 +275,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
-     <height>26</height>
+     <width>1080</width>
+     <height>23</height>
     </rect>
    </property>
   </widget>

@@ -17,31 +17,43 @@ class VideoResizeTaskItem(QWidget, Ui_Form):
         self.video_info = ffmpeg.probe(self.filepath, 'ffprobe')
         self.w = 0
         self.h = 0
+        self.fps = 0
         self.init_ui()
 
     def init_ui(self):
         self.labelFileName.setText(os.path.basename(self.filepath))
         self.get_video_info(self.video_info)
         self.add_ratios()
-        self.labelState.setText('未开始')
+        self.labelState.setText('状态:未开始')
+        self.lineEditFps.setDisabled(True)
+        self.lineEditFps.setText(str(self.fps))
 
         self.comboBoxRatio.currentIndexChanged.connect(self.on_ratio_selected)
         self.btnStart.clicked.connect(self.on_start_clicked)
+        self.checkBoxFps.stateChanged.connect(self.on_fps_checked)
 
     def update_progress_bar(self, p):
-        self.labelState.setText('进行中')
+        self.labelState.setText('状态:进行中...')
+        i = 0
         while True:
             state = p.poll()
             if state is not None:
                 if state == 0:
-                    self.labelState.setText('已完成')
+                    self.labelState.setText('状态:已完成')
                 else:
-                    self.labelState.setText('任务失败')
+                    self.labelState.setText('状态:任务失败')
                 break
-            time.sleep(1)
+            else:
+                if i % 3 == 0:
+                    self.labelState.setText('状态:进行中.')
+                elif i % 3 == 1:
+                    self.labelState.setText('状态:进行中..')
+                elif i % 3 == 2:
+                    self.labelState.setText('状态:进行中...')
+                i+=1
+            time.sleep(0.5)
 
     def get_video_info(self, s):
-        fps = 0
         size = 0
         duration = 0
         bit_rate = 0
@@ -57,10 +69,10 @@ class VideoResizeTaskItem(QWidget, Ui_Form):
                     self.w = int(item['width'])
                     self.h = int(item['height'])
                     codec_name = item['codec_name']
-                    fps = round(float(item['nb_frames'])/float(item['duration']))
+                    self.fps = round(float(item['nb_frames'])/float(item['duration']))
                     break
         size = f"{round(size/1024/1024,2)}Mb"
-        info = f"{self.w}x{self.h},{duration}秒,{fps}fps,{codec_name},{size}"
+        info = f"{self.w}x{self.h},{duration}秒,{self.fps}fps,{codec_name},{size}"
         self.labelVideoInfo.setText(info)
 
     def add_ratios(self):
@@ -90,17 +102,37 @@ class VideoResizeTaskItem(QWidget, Ui_Form):
         if not self.lineEditResizeW.text() or not self.lineEditResizeH.text():
             QMessageBox.warning(self, "warning", "请输入正确的缩放宽高", QMessageBox.Close)
             return
+        change_fps_value = int(self.lineEditFps.text())
+        if self.checkBoxFps.isChecked() and (change_fps_value > 144 or change_fps_value < 1):
+            QMessageBox.warning(self, "warning", "fps必须在1~144之间", QMessageBox.Close)
+            return
         r_w = int(self.lineEditResizeW.text())
         r_h = int(self.lineEditResizeH.text())
+        if r_w % 2 == 1:
+            r_w += 1
+        if r_h % 2 == 1:
+            r_h += 1
         input_video = ffmpeg.input(self.filepath)
-        v = input_video.video.filter('scale', f'{r_w}x{r_h}')
+        if self.checkBoxFps.isChecked() and self.fps != change_fps_value:
+            v = input_video.video.filter('framerate', str(change_fps_value))
+        else:
+            v = input_video.video
+        if r_h != self.h or r_w != self.w:
+            v = v.filter('scale', f'{r_w}x{r_h}')
         a = input_video.audio
         suf = '.' + os.path.basename(self.filepath).split('.')[-1]
         out_path = os.path.join(
             os.path.dirname(self.filepath),
-            self.filepath.replace(suf, f'_resize_{r_w}x{r_h}{suf}')
+            self.filepath.replace(suf, f'_resize_{r_w}x{r_h}_fps{change_fps_value}{suf}')
         )
         out = ffmpeg.output(v, a, out_path).overwrite_output()
         p = out.run_async()
         t = Thread(target=self.update_progress_bar, args=(p,))
         t.start()
+
+    def on_fps_checked(self):
+        if self.checkBoxFps.isChecked():
+            self.lineEditFps.setEnabled(True)
+        else:
+            self.lineEditFps.setDisabled(True)
+            self.lineEditFps.setText(str(self.fps))
